@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Drag&Drop</title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h1>Drag Drop Game</h1>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="drag-drop">
+                <div class="area">
+                    <div class="inicio">
+                        <h1>Escolha a quantidade de peças de jogo. <br>(max: 15)</h1>
+                        <div class="qtarea">
+                            <button class="btn--qtmenos">-</button>
+                            <div class="qt">5</div>
+                            <button class="btn--qtmais">+</button>
+                        </div>
+                        <button class="start">Start</button>
+                    </div>
+                </div>
+                <div class="area">
+                    <div class="drag-area">
+                        <div class="drag-area--item">
+                            <i data-name="Gato" class="fa-solid fa-cat fa-4x drag-item" draggable="true"></i>
+                        </div>
+                    </div>
+                    <div class="drop-area">
+                        <div class="drop-area--item">
+                            <div data-name="Gato" class="drop-item">
+                                <span>Gato</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer">Criado por: <strong> <a href="https://github.com/DavidsonRB"
+                    target="_blank">DavidsonRB</a></strong> - 2023</div>
+    </footer>
+
+    <script type="text/javascript" src="info.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

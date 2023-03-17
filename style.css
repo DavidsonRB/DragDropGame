@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+}
+
+header {
+    height: 100px;
+    background-color: mediumturquoise;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    font-size: min(6vw, 50px);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.inicio {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inicio h1 {
+    font-size: min(2vw, 50px);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+
+.qtarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    background-color: mediumturquoise;
+    border-radius: 10px;
+    height: 50px;
+    margin-top: 100px;
+}
+
+.qtarea button {
+    border: 0;
+    background-color: transparent;
+    font-size: 40px;
+    outline: 0;
+    cursor: pointer;
+    padding: 0px 10px;
+    color: #333;
+}
+
+.qt {
+    line-height: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0px 30px;
+    color: #000;
+}
+
+.start {
+    margin-top: 20px;
+    padding: 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    height: calc(100vh - 140px);
+    overflow: hidden;
+}
+
+.drag-drop {
+    width: 200vw;
+    height: 100%;
+    display: flex;
+    transition: all ease 0.3s;
+}
+
+.area {
+    width: 100vw;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.drag-area {
+    flex: 2;
+}
+
+.drop-area {
+    flex: 1;
+}
+
+.drag-area--item {
+    width: 100%;
+    min-height: 100%;
+    padding-top: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.drag-item {
+    width: 7vw;
+    height: 7vw;
+    min-width: 68px;
+    min-height: 68px;
+    cursor: grab;
+}
+
+.drag-item::before {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-item.dragging {
+    opacity: 0.9;
+}
+
+
+.drop-area--item {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+
+.drop-item {
+    width: 7vw;
+    height: 7vw;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 100%;
+    border: 3px dashed #000;
+    background-color: #FFF;
+    font-size: 0.9vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-item span {
+    font-size: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.footer {
+    height: 40px;
+    padding-top: 10px;
+    background-color: aqua;
+    text-align: center;
+}
+
+.hover {
+    background-color: #0002 !important;
+}
+
+.correct {
+    border: 4px dashed #30FF18 !important;
+}
+
+/* ----------DESKTOP---------- */
+
+@media (min-width:801px) and (max-width:1024px) {
+    .drop-item {
+        width: 10vw;
+        height: 10vw;
+        min-width: 80px;
+        min-height: 80px;
+        font-size: 1.5vw;
+    }
+}
+
+/* ----------TABLET---------- */
+@media (min-width:450px) and (max-width:800px) {
+
+    .drag-area {
+        flex: 1;
+    }
+
+    .drag-area--item {
+        gap: 15px;
+    }
+
+    .drop-area--item {
+        gap: 15px;
+    }
+
+    .drop-item {
+        width: 10vw;
+        height: 10vw;
+        min-width: 80px;
+        min-height: 80px;
+        font-size: 1.5vw;
+    }
+
+}
+
+/* ----------MOBILE---------- */
+@media (max-width:450px) {
+
+    .inicio h1 {
+        font-size: min(4vw, 50px);
+        font-weight: bold;
+        text-transform: uppercase;
+
+    }
+
+    .drag-area {
+        flex: 1;
+    }
+
+    .drag-item {
+        margin: 0;
+        padding: 0;
+    }
+
+    .drag-item::before {
+        font-size: 10vw;
+        margin: 0;
+        padding: 0;
+    }
+
+    .drag-area--item {
+        gap: 10px;
+    }
+
+    .drop-area--item {
+        gap: 20px;
+    }
+
+    .drop-item {
+        min-width: 75px;
+        min-height: 75px;
+        font-size: 2vw;
+    }
+}
