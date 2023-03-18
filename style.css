@@ -181,7 +181,7 @@ header h1 {
 }
 
 .correct {
-    border: 4px dashed #30FF18 !important;
+    border: 6px solid #30FF18 !important;
 }
 
 /* ----------DESKTOP---------- */
@@ -251,7 +251,7 @@ header h1 {
     }
 
     .drop-area--item {
-        gap: 20px;
+        gap: 9px;
     }
 
     .drop-item {

@@ -1,5 +1,6 @@
 
 let quantidade = 5;
+let acertos = 0;
 
 document.querySelector(".drag-area--item").innerHTML = '';
 document.querySelector(".drop-area--item").innerHTML = '';
@@ -10,7 +11,6 @@ function criarTela(itensJson, quantidade) {
 
     cores.sort(() => Math.random() - 0.5);
 
-    // Percorre o array de itensJson e adiciona os valores de id e dataName em arrays separados
     itensJson.forEach((item) => {
         nome.push(item.name);
         dataNames.push(item.dataName);
@@ -19,25 +19,28 @@ function criarTela(itensJson, quantidade) {
     let area_drag = document.querySelector(".drag-area--item");
     let area_drop = document.querySelector(".drop-area--item");
 
+    let posicoesSelecionadas = [];
+
     for (let i = 0; i < quantidade; i++) {
-        // Seleciona um id e um dataName aleatoriamente dos arrays criados anteriormente
-        let randomIndex = Math.floor(Math.random() * nome.length);
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * nome.length);
+        } while (posicoesSelecionadas.includes(randomIndex));
+
+        posicoesSelecionadas.push(randomIndex);
+
         let randomName = nome[randomIndex];
         let randomDataName = dataNames[randomIndex];
 
-        // Seleciona uma cor aleatória da lista de cores randomizadas
         let randomColor = cores[i % cores.length];
 
-        // Adiciona o ícone na tela com o id, dataName e cor aleatórios selecionados
         area_drag.innerHTML += `<i data-name="${randomName}" data-color="${randomColor}"
         class=" fa-solid fa-${randomDataName} fa-4x drag-item" draggable="true"
         style="display:flex; color: ${randomColor}; order:${Math.random().toFixed(0)}"></i>`;
 
-        // Adiciona o ícone na tela com o id e dataName aleatórios selecionados
         area_drop.innerHTML += `<div data-name="${randomName}" class="drop-item"><span>${randomName}</span></div>`;
     }
 }
-
 
 //  BOTOES 
 document.querySelector('.btn--qtmenos').addEventListener('click', () => {
@@ -61,7 +64,6 @@ document.querySelector('.start').addEventListener('click', () => {
     document.querySelector('.area').style.marginLeft = `-${areaWidth}px`;
 
     criarTela(itensJson, quantidade);
-
 
     document.querySelectorAll('.drag-item').forEach(drag => {
         drag.addEventListener('dragstart', dragStart);
@@ -105,19 +107,29 @@ function dragLeave(e) {
 
 function dropItem(e) {
     e.currentTarget.classList.remove('hover');
+    let dragItem = document.querySelector('.drag-item.dragging');
 
     if (e.currentTarget.querySelector('.drag-item') === null) {
-        let dragItem = document.querySelector('.drag-item.dragging');
-
         e.currentTarget.innerHTML = '';
+        e.currentTarget.appendChild(dragItem);
         e.currentTarget.style.backgroundColor = dragItem.getAttribute('data-color');
         dragItem.style.color = '#FFF';
-
-        e.currentTarget.appendChild(dragItem);
-        updatesAreas();
     }
-}
 
+    if (e.currentTarget.getAttribute('data-name') === e.currentTarget.querySelector('.drag-item').getAttribute('data-name')) {
+        e.currentTarget.classList.add('correct');
+    }
+
+    document.querySelectorAll('.drop-item').forEach(drop => {
+        if (drop.innerHTML === '') {
+            //acertos--;
+            drop.style.backgroundColor = '#FFF';
+            drop.innerHTML = `<span>${drop.getAttribute('data-name')}</span>`;
+            drop.classList.remove('correct');
+        }
+    });
+    qtdAcertos();
+}
 
 // Functions Neutral Area
 
@@ -143,26 +155,17 @@ function dropNeutral(e) {
             drop.classList.remove('correct');
         }
     });
-    updatesAreas();
+    qtdAcertos();
 }
 
-//  Logic Function
-function updatesAreas() {
-    let dragItem = document.querySelector('.drag-item.dragging');
+//  Quantidade de Acertos Function
+function qtdAcertos() {
 
-    console.log(dragItem.getAttribute('data-name'))
+    if (document.querySelector('.correct')) {
+        acertos = document.querySelectorAll('.correct').length;
 
-
-    document.querySelectorAll('.drop-item').forEach(drop => {
-
-        if (dragItem.getAttribute('data-name') === drop.getAttribute('data-name')) {
-            console.log(drop.getAttribute('data-name'))
-            drop.classList.add('correct');
-        }
-        else {
-            drop.classList.remove('correct');
-        }
-    });
-
-
+    } else {
+        acertos = document.querySelectorAll('.correct').length;
+    }
+    console.log(acertos);
 }

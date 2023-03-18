@@ -46,6 +46,6 @@ let cores = [
     '#808000', // verde oliva
     '#008080', // azul petróleo
     '#800080', // roxo
-    '#C0C0C0', // cinza claro
+    '#000000',
     '#000FFF'
 ];
