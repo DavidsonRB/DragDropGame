@@ -7,6 +7,9 @@ function criarTela(itensJson, quantidade) {
     let nome = [];
     let dataNames = [];
 
+    acertos = 0;
+    tentativas = 0;
+
     document.querySelector(".drag-area--item").innerHTML = '';
     document.querySelector(".drop-area--item").innerHTML = '';
 
