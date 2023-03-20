@@ -36,7 +36,7 @@ function criarTela(itensJson, quantidade) {
 
         area_drag.innerHTML += `<i data-name="${randomName}" data-color="${randomColor}"
         class=" fa-solid fa-${randomDataName} fa-4x drag-item" draggable="true"
-        style="display:flex; color: ${randomColor}; order:${Math.random().toFixed(0)}"></i>`;
+        style="display:flex; color: ${randomColor}; order:${(Math.random() * 20).toFixed(0)}"></i>`;
 
         area_drop.innerHTML += `<div data-name="${randomName}" class="drop-item"><span>${randomName}</span></div>`;
     }
@@ -158,7 +158,7 @@ function dropNeutral(e) {
     qtdAcertos();
 }
 
-//  Quantidade de Acertos Function
+//  quantidade de Acertos Function
 function qtdAcertos() {
 
     if (document.querySelector('.correct')) {
