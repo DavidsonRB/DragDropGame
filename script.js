@@ -1,13 +1,14 @@
 
 let quantidade = 5;
 let acertos = 0;
-
-document.querySelector(".drag-area--item").innerHTML = '';
-document.querySelector(".drop-area--item").innerHTML = '';
+let tentativas = 0;
 
 function criarTela(itensJson, quantidade) {
     let nome = [];
     let dataNames = [];
+
+    document.querySelector(".drag-area--item").innerHTML = '';
+    document.querySelector(".drop-area--item").innerHTML = '';
 
     cores.sort(() => Math.random() - 0.5);
 
@@ -122,7 +123,7 @@ function dropItem(e) {
 
     document.querySelectorAll('.drop-item').forEach(drop => {
         if (drop.innerHTML === '') {
-            //acertos--;
+
             drop.style.backgroundColor = '#FFF';
             drop.innerHTML = `<span>${drop.getAttribute('data-name')}</span>`;
             drop.classList.remove('correct');
@@ -163,9 +164,23 @@ function qtdAcertos() {
 
     if (document.querySelector('.correct')) {
         acertos = document.querySelectorAll('.correct').length;
-
+        tentativas++;
     } else {
         acertos = document.querySelectorAll('.correct').length;
+        tentativas++;
     }
-    console.log(acertos);
+
+    if (acertos == quantidade) {
+        let percent = (acertos * 100) / tentativas;
+
+        document.querySelector('.fim h1').innerHTML = `Voce fez <strong>${percent.toFixed(0)}%</strong>`;
+
+        let areaWidth = document.querySelector('.area').clientWidth;
+        document.querySelector('.area').style.marginLeft = `-${areaWidth * 2}px`;
+    }
 }
+
+//  FIM
+document.querySelector('.restart').addEventListener('click', () => {
+    document.querySelector('.area').style.marginLeft = `0px`;
+});

@@ -85,7 +85,7 @@ header h1 {
 }
 
 .drag-drop {
-    width: 200vw;
+    width: 300vw;
     height: 100%;
     display: flex;
     transition: all ease 0.3s;
@@ -96,6 +96,7 @@ header h1 {
     height: inherit;
     display: flex;
     flex-direction: column;
+    transition: all ease 0.3s;
 }
 
 .drag-area {
@@ -182,6 +183,27 @@ header h1 {
 
 .correct {
     border: 6px solid #30FF18 !important;
+}
+
+.fim {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.fim h1 {
+    font-size: 4vw;
+}
+
+.fim button {
+    margin-top: 20px;
+    padding: 10px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 /* ----------DESKTOP---------- */
